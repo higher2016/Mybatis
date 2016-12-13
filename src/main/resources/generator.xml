@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 该配置文件用于生成mybatis，数据库model类、dao接口、dao *Mapper.xml映射文件 -->
+	
+	<!-- 引入配置文件, 数据库的连接信息, 生成pojo需要 数据库与表信息 <properties resource="conn.properties" 
+		/> -->
+	<classPathEntry location="J:\mysql\mysql-connector.jar" />
+	<context id="mine">
+		<commentGenerator>
+			<!-- 配置是否生成注释, 默认为false -->
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+		<!-- 获取连接数据库的信息, 用来通过 table 生成 生成类 与 sql mapper -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/jm"
+			userId="root" password="1234" />
+		<!-- 定义存储model的包 -->
+		<javaModelGenerator targetPackage="com.jm.model" targetProject="Mybatis\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- 定义存储XML的包 -->
+		<sqlMapGenerator targetPackage="com.jm.mapper" targetProject="Mybatis\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- 生成Dao -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.jm.dao" targetProject="Mybatis\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<table tableName="test_view" domainObjectName="TestView" enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+
+	</context>
+</generatorConfiguration>  

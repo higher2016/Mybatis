@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jm.dao.BugMapper" >
+  <resultMap id="BaseResultMap" type="com.jm.model.Bug" >
+    <id column="T_BUG_ID" property="tBugId" jdbcType="BIGINT" />
+  </resultMap>
+  <select id="loadById" resultMap="BaseResultMap">
+  	select * from T_BUG where t_bug_id=#{id,jdbcType=BIGINT}
+  </select>
+</mapper>
